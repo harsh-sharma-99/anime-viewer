@@ -1,11 +1,14 @@
 import React from "react";
 import "./styles.scss";
-import { useSelector } from "react-redux";
+import { loadMore } from "../../redux/anime/animeActions";
+import { useDispatch } from "react-redux";
 
 const LoadMoreButton = () => {
-  const data = useSelector((state) => state);
-  const handlePage = () => {};
-  console.log(data);
+  const dispatch = useDispatch();
+  const handlePage = () => {
+    dispatch(loadMore());
+  };
+
   return (
     <div className="load-button">
       <button onClick={handlePage}> Load More ...</button>
