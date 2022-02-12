@@ -11,7 +11,7 @@ const SearchBox = () => {
   const dispatch = useDispatch();
 
   const handleSearch = () => {
-    dispatch(fetchAnime(search));
+    dispatch(fetchAnime(search, 1));
   };
   const handleInputChange = (e) => {
     setSearch(e.target.value);

@@ -8,6 +8,7 @@ const initialState = {
   loading: false,
   anime: [],
   error: "",
+  pageNumber: 1,
 };
 
 const animeReducer = (state = initialState, action) => {
@@ -18,16 +19,28 @@ const animeReducer = (state = initialState, action) => {
         loading: true,
       };
     case FETCH_ANIME_SUCCESS:
-      return {
-        loading: false,
-        anime: action.payload,
-        error: "",
-      };
+      if (action.payload.pageNumber > 1) {
+        return {
+          loading: false,
+          anime: [...state.anime, ...action.payload.anime],
+          error: "",
+          pageNumber: action.payload.pageNumber,
+        };
+      } else {
+        return {
+          loading: false,
+          anime: action.payload,
+          error: "",
+          pageNumber: 1,
+        };
+      }
+
     case FETCH_ANIME_FAILURE:
       return {
         loading: false,
         anime: [],
         error: action.payload,
+        pageNumber: 1,
       };
     default:
       return state;

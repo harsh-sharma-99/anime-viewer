@@ -4,6 +4,7 @@ import AnimeCardsList from "./components/animeCardsList";
 import Header from "./components/header/index";
 import SearchBox from "./components/searchBox/index";
 import store from "./redux/store";
+import LoadMoreButton from "./components/loadMoreButton/index";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Header />
         <SearchBox />
         <AnimeCardsList />
+        <LoadMoreButton />
       </div>
     </Provider>
   );

@@ -11,10 +11,10 @@ export const fetchAnimeRequest = () => {
   };
 };
 
-export const fetchAnimeSuccess = (anime) => {
+export const fetchAnimeSuccess = (payload) => {
   return {
     type: FETCH_ANIME_SUCCESS,
-    payload: anime,
+    payload: payload,
   };
 };
 
@@ -25,15 +25,17 @@ export const fetchAnimeFailure = (error) => {
   };
 };
 
-export const fetchAnime = (search) => {
-  console.log(search);
+export const fetchAnime = (search, pageNumber = 1) => {
   return (dispatch) => {
     dispatch(fetchAnimeRequest());
     axios
-      .get(`https://api.jikan.moe/v3/search/anime?q=${search}&limit=16`)
+      .get(
+        `https://api.jikan.moe/v3/search/anime?q=${search}&limit=16&page=${pageNumber}`
+      )
       .then((res) => {
         const anime = res.data.results;
-        dispatch(fetchAnimeSuccess(anime));
+        const data = { anime, pageNumber };
+        dispatch(fetchAnimeSuccess(data));
       })
       .catch((error) => {
         const errMsg = error.message;
