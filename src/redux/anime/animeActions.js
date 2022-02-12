@@ -25,13 +25,13 @@ export const fetchAnimeFailure = (error) => {
   };
 };
 
-export const fetchAnime = () => {
+export const fetchAnime = (search) => {
+  console.log(search);
   return (dispatch) => {
     dispatch(fetchAnimeRequest());
     axios
-      .get("https://api.jikan.moe/v3/search/anime?q=naruto&limit=16")
+      .get(`https://api.jikan.moe/v3/search/anime?q=${search}&limit=16`)
       .then((res) => {
-        console.log(res);
         const anime = res.data.results;
         dispatch(fetchAnimeSuccess(anime));
       })
