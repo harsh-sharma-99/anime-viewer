@@ -40,7 +40,7 @@ export const fetchAnime = (search, pageNumber = 1) => {
         `https://api.jikan.moe/v3/search/anime?q=${search}&limit=16&page=${pageNumber}`
       )
       .then((res) => {
-        const anime = res.data.results;
+        const anime = res.data;
         const data = { anime, pageNumber };
         dispatch(fetchAnimeSuccess(data));
       })

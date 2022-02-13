@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   loading: false,
-  anime: [],
+  anime: {},
   error: "",
   pageNumber: 1,
   loadMore: false,
@@ -22,15 +22,20 @@ const animeReducer = (state = initialState, action) => {
       };
     case FETCH_ANIME_SUCCESS:
       if (action.payload.pageNumber > 1) {
+        console.log(state.anime);
         return {
           ...state,
           loading: false,
-          anime: [...state?.anime, ...action.payload.anime],
+          anime: {
+            ...state?.anime,
+            results: [...state.anime.results, ...action.payload.anime.results],
+          },
           error: "",
           pageNumber: action.payload.pageNumber,
           loadMore: false,
         };
       } else {
+        console.log(action.payload.anime);
         return {
           ...state,
           loading: false,

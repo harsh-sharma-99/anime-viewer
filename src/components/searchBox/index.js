@@ -15,8 +15,8 @@ const SearchBox = () => {
     if (pageNumber > 1) {
       dispatch(fetchAnime(search, pageNumber));
     }
-    //eslint-disable-line react-hooks/exhaustive-deps
-  }, [pageNumber, dispatch, search]);
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
 
   const handleSearch = () => {
     dispatch(fetchAnime(search, 1));
@@ -37,7 +37,7 @@ const SearchBox = () => {
         />
 
         <button onClick={handleSearch} className={`${rootClassName}__button`}>
-          Search
+          Go
         </button>
       </div>
     </div>

@@ -8,9 +8,13 @@ import { useState, useEffect } from "react";
 
 function App() {
   const anime = useSelector((state) => state?.animeRed?.anime);
+  const lastPage = useSelector((state) => state?.animeRed?.anime?.last_page);
+  const pageCount = useSelector((state) => state?.animeRed?.pageNumber);
+  const loadMore = useSelector((state) => state?.animeRed?.loadMore);
   const [loadFlag, setLoadFlag] = useState(false);
+
   useEffect(() => {
-    if (anime.length) {
+    if (anime?.results?.length) {
       setLoadFlag(true);
     } else {
       setLoadFlag(false);
@@ -19,10 +23,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <SearchBox />
       <AnimeCardsList />
-      {loadFlag && <LoadMoreButton />}
+      {!loadMore && loadFlag && pageCount < lastPage && <LoadMoreButton />}
     </div>
   );
 }
