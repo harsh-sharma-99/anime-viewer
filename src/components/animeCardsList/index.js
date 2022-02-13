@@ -1,8 +1,10 @@
 import React from "react";
-import "./styles.scss";
 import { useSelector } from "react-redux";
-import AnimeCard from "./../animeCard/index";
 import CircularProgress from "@mui/material/CircularProgress";
+
+import AnimeCard from "./../animeCard/index";
+
+import "./styles.scss";
 
 const rootClassName = "anime-list";
 
@@ -20,13 +22,13 @@ const AnimeCardsList = () => {
   }
 
   return (
-    <div className={`${rootClassName}_wrapper`}>
-      <div className={`${rootClassName}`}>
-        {animeList?.results?.map((anime) => (
-          <AnimeCard anime={anime} />
+    <div className={rootClassName}>
+      <div className={`${rootClassName}_wrapper`}>
+        {animeList?.results?.map((anime, idx) => (
+          <AnimeCard anime={anime} key={idx} />
         ))}
       </div>
-      {loadMore && <CircularProgress color="success" />}
+      {loadMore && <CircularProgress color="warning" />}
     </div>
   );
 };

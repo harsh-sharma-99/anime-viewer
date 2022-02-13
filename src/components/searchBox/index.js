@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { fetchAnime } from "../../redux/anime/animeActions";
+
 import "./styles.scss";
 
 const rootClassName = "anime-search";
 
 const SearchBox = () => {
   const [search, setSearch] = useState("");
-
   const dispatch = useDispatch();
   const pageNumber = useSelector((state) => state.animeRed.pageNumber);
 
@@ -32,11 +33,10 @@ const SearchBox = () => {
         <input
           type="text"
           value={search}
-          placeholder="Search anime ..."
+          placeholder="Search anime"
           onChange={(e) => handleInputChange(e)}
         />
-
-        <button onClick={handleSearch} className={`${rootClassName}__button`}>
+        <button className={`${rootClassName}__button`} onClick={handleSearch}>
           Go
         </button>
       </div>

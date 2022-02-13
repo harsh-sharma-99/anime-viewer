@@ -7,11 +7,10 @@ const AnimeCard = ({ anime }) => {
   return (
     <div className={rootClassName}>
       <div className={`${rootClassName}__image`}>
-        {anime.image_url !== "N/A" ? (
-          <img src={anime.image_url} alt="display pic" />
+        {anime.image_url ? (
+          <img src={anime.image_url} alt="Anime art" />
         ) : (
-          <h1>No Image</h1>
-          //   <img src={NoImg} alt="no pic" />
+          <div>No Image</div>
         )}
       </div>
       <div className={`${rootClassName}__title`} title={anime.title}>

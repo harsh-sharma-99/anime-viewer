@@ -22,7 +22,6 @@ const animeReducer = (state = initialState, action) => {
       };
     case FETCH_ANIME_SUCCESS:
       if (action.payload.pageNumber > 1) {
-        console.log(state.anime);
         return {
           ...state,
           loading: false,
@@ -35,7 +34,6 @@ const animeReducer = (state = initialState, action) => {
           loadMore: false,
         };
       } else {
-        console.log(action.payload.anime);
         return {
           ...state,
           loading: false,

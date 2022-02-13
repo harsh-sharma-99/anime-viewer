@@ -1,12 +1,19 @@
 .anime-list {
   display: flex;
   justify-content: center;
-  min-height: 400px;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 5rem;
+  margin-top: 100px;
+
+  @media all and (max-width: 500px) {
+    padding: 0;
+  }
+
   &_wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    min-height: 400px;
+    flex-wrap: wrap;
   }
 }

@@ -1,16 +1,22 @@
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import "./App.scss";
+
 import AnimeCardsList from "./components/animeCardsList";
 import SearchBox from "./components/searchBox/index";
 import LoadMoreButton from "./components/loadMoreButton/index";
-import { useState, useEffect } from "react";
+
+import "./App.scss";
+
+const rootClassName = "anime-viewer";
 
 function App() {
+  const [loadFlag, setLoadFlag] = useState(false);
   const anime = useSelector((state) => state?.animeRed?.anime);
   const lastPage = useSelector((state) => state?.animeRed?.anime?.last_page);
   const pageCount = useSelector((state) => state?.animeRed?.pageNumber);
   const loadMore = useSelector((state) => state?.animeRed?.loadMore);
-  const [loadFlag, setLoadFlag] = useState(false);
+
+  const showLoadMoreButton = !loadMore && loadFlag && pageCount < lastPage;
 
   useEffect(() => {
     if (anime?.results?.length) {
@@ -21,10 +27,10 @@ function App() {
   }, [anime]);
 
   return (
-    <div className="App">
+    <div className={rootClassName}>
       <SearchBox />
       <AnimeCardsList />
-      {!loadMore && loadFlag && pageCount < lastPage && <LoadMoreButton />}
+      {showLoadMoreButton && <LoadMoreButton />}
     </div>
   );
 }
