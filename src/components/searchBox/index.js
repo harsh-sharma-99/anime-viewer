@@ -9,7 +9,7 @@ const SearchBox = () => {
   const [search, setSearch] = useState("");
 
   const dispatch = useDispatch();
-  const pageNumber = useSelector((state) => state.anime.pageNumber);
+  const pageNumber = useSelector((state) => state.animeRed.pageNumber);
 
   useEffect(() => {
     if (pageNumber > 1) {
@@ -24,7 +24,7 @@ const SearchBox = () => {
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
-  console.log(pageNumber, "ans");
+
   return (
     <div className={rootClassName}>
       <div className={`${rootClassName}__wrapper`}>

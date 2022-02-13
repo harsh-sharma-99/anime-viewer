@@ -21,20 +21,18 @@ const animeReducer = (state = initialState, action) => {
       };
     case FETCH_ANIME_SUCCESS:
       if (action.payload.pageNumber > 1) {
-        console.log(state.anime);
         return {
           ...state,
           loading: false,
-          anime: [...state.anime, ...action.payload.anime],
+          anime: [...state?.anime, ...action.payload.anime],
           error: "",
           pageNumber: action.payload.pageNumber,
         };
       } else {
-        console.log("testLoad1");
         return {
           ...state,
           loading: false,
-          anime: action.payload,
+          anime: action.payload.anime,
           error: "",
           pageNumber: 1,
         };
