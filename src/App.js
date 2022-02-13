@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import "./App.scss";
 import AnimeCardsList from "./components/animeCardsList";
-import Header from "./components/header/index";
 import SearchBox from "./components/searchBox/index";
 import LoadMoreButton from "./components/loadMoreButton/index";
 import { useState, useEffect } from "react";
@@ -23,7 +22,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Header /> */}
       <SearchBox />
       <AnimeCardsList />
       {!loadMore && loadFlag && pageCount < lastPage && <LoadMoreButton />}
