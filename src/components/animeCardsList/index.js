@@ -9,8 +9,9 @@ const rootClassName = "anime-list";
 const AnimeCardsList = () => {
   const animeList = useSelector((state) => state?.animeRed?.anime);
   const loadingFlag = useSelector((state) => state?.animeRed?.loading);
+  const loadMore = useSelector((state) => state?.animeRed?.loadMore);
 
-  if (loadingFlag) {
+  if (loadingFlag && !animeList.length) {
     return (
       <div>
         <CircularProgress />
@@ -18,10 +19,13 @@ const AnimeCardsList = () => {
     );
   }
   return (
-    <div className={`${rootClassName}`}>
-      {animeList?.map((anime) => (
-        <AnimeCard anime={anime} />
-      ))}
+    <div className={`${rootClassName}_wrapper`}>
+      <div className={`${rootClassName}`}>
+        {animeList?.map((anime) => (
+          <AnimeCard anime={anime} />
+        ))}
+      </div>
+      {loadMore && <CircularProgress />}
     </div>
   );
 };

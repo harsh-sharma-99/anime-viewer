@@ -15,6 +15,7 @@ const SearchBox = () => {
     if (pageNumber > 1) {
       dispatch(fetchAnime(search, pageNumber));
     }
+    //eslint-disable-line react-hooks/exhaustive-deps
   }, [pageNumber, dispatch, search]);
 
   const handleSearch = () => {

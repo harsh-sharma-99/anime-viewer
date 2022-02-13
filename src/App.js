@@ -10,15 +10,13 @@ function App() {
   const anime = useSelector((state) => state?.animeRed?.anime);
   const [loadFlag, setLoadFlag] = useState(false);
   useEffect(() => {
-    console.log(anime, "bef");
-    if (anime === []) {
-      console.log(anime, "IN");
-      setLoadFlag(false);
-    } else {
+    if (anime.length) {
       setLoadFlag(true);
+    } else {
+      setLoadFlag(false);
     }
   }, [anime]);
-  console.log(loadFlag);
+
   return (
     <div className="App">
       <Header />

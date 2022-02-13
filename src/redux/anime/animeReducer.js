@@ -10,6 +10,7 @@ const initialState = {
   anime: [],
   error: "",
   pageNumber: 1,
+  loadMore: false,
 };
 
 const animeReducer = (state = initialState, action) => {
@@ -27,6 +28,7 @@ const animeReducer = (state = initialState, action) => {
           anime: [...state?.anime, ...action.payload.anime],
           error: "",
           pageNumber: action.payload.pageNumber,
+          loadMore: false,
         };
       } else {
         return {
@@ -35,6 +37,7 @@ const animeReducer = (state = initialState, action) => {
           anime: action.payload.anime,
           error: "",
           pageNumber: 1,
+          loadMore: false,
         };
       }
 
@@ -51,6 +54,7 @@ const animeReducer = (state = initialState, action) => {
       return {
         ...state,
         pageNumber: state.pageNumber + 1,
+        loadMore: true,
       };
     default:
       return state;
